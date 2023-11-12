@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta_des %}
+    {{ product.desc|truncatewords:155 }}
+
+
+{% endblock %}
+
+{% block title %}
+    {{ product.name }}
+{% endblock %}
+
+
+{% block content %}
+
+
+<div>
+    <div>
+        <p> <a href="{% url 'online:all_cats' %}"> Home</a> |
+            <a href="{{product.category.url}}"> {{product.category}}</a> |
+            {{product.name}}</p>
+    </div>
+</div>
+
+
+
+<div class="row">
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6" style="text-align: center;">
+            <img src="{{ product.img.url }}" style="width: 350px;height: 450px;" alt="{{ product.name}}"> </div>
+
+
+
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <h1 class="cls_txt3" >{{ product.name }}</h1>
+              <p class="cls_txt4">Rs.{{ product.price }}</p>
+            <p class="cls_txt4" >Description</p>
+             <p class="text-justify cls_txt4" style="font-weight: normal;">{{ product.desc }}</p>
+            {% if product.stock <= 0 %}
+             <p class="text-justify"><b>Out of Stock</b></p>
+            {% else %}
+
+            <a href="{% url 'cart:add_cart' product.id %}" class="cls_btn1" style="margin-left: 10px;" > Add to Cart</a>
+            {% endif %}
+        </div>
+
+
+</div>
+
+
+
+
+{% endblock %}

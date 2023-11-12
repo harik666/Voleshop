@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta_des %}
+
+    Cart Page
+
+
+{% endblock %}
+
+{% block title %}
+
+Cart - Volsale
+
+{% endblock %}
+
+
+{% block content %}
+
+{% if not cart_items %}
+
+<div>
+    <div class="text-center">
+        <h2 class="text_center my_title">Your shopping cart is empty</h2> <br>
+        <p class="text-center"> Click here <a href="{% url 'online:cart'%}"> here </a> to continue shopping </p>
+    </div>
+</div>
+
+{% else %}
+
+<div>
+    <div class="text-center">
+        <h2 class="text_center my_title">Your shopping cart </h2> <br>
+    </div>
+
+    <div class="mx-auto">
+
+     <div class="col-12 col-sm col-md-12 col-lg-6 text-center cls_a">
+        <table class="table cls_table">
+            <thead>
+            <tr>
+                <th colspan="5">
+                       Your Items
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for cart_item in cart_items %}
+            <tr>
+                <td>
+                    <a href="cart_item.product.get_absolute_url">
+                      <img src="{{cart_item.product.img.url}}" class="float-left rounded cls_img">
+                    </a>
+                </td>
+                <td class="text-lef">
+                    <span class="cls_spn1"> {{cart_item.product.name}} </span>
+                   <span class="cls_spn1">  SKU : {{cart_item.product.id}} </span>
+                    <span class="cls_spn1"> Price : Rs {{cart_item.product.price}} </span>
+                    <span class="cls_spn1"> Qty : {{cart_item.qty}} </span>
+                </td>
+                <td>
+                    <span class="cls_spn1">  Rs  {{cart_item.sub_total}} </span>
+                </td>
+                {% if cart_item.qty < cart_item.product.stock %}
+                <td class="cls_td">
+                    &nbsp;  <a href="{% url 'cart:add_cart' cart_item.product.id %}">  <i class="fa-solid fa-plus cls_ic1" ></i></a>
+                    &nbsp;    <a href="{% url 'cart:cart_remove' cart_item.product.id %}">  <i class="fa-solid fa-minus cls_ic1"></i> </a>
+                    &nbsp;    <a href="{% url 'cart:cart_delete' cart_item.product.id %}">   <i class="fa-solid fa-trash cls_ic2" ></i> </a>
+
+                </td>
+
+               {% else %}
+                <td class="cls_td">
+                     &nbsp;   <a href="{% url 'cart:cart_remove' cart_item.product.id %}">  <i class="fa-solid fa-minus cls_ic1"></i> </a>
+                     &nbsp;  <a href="{% url 'cart:cart_delete' cart_item.product.id %}">   <i class="fa-solid fa-trash cls_ic2" ></i> </a>
+
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            </tbody>
+
+        </table>
+
+    </div>
+
+    <div class="col-12 col-sm col-md-12 col-lg-6 text-center cls_a">
+        <table class="table cls_table">
+            <thead>
+            <tr>
+                <th>
+                    Checkout
+                </th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                Please review your shopping cart items before proceeding with the payment.
+            </td>
+            </tr>
+
+            <tr>
+                <td>
+                    Your Total : <strong> {{total}}</strong>
+            </td>
+            </tr>
+
+            </tbody>
+
+        </table>
+        <div class="mx-auto">
+            <a href="{% url 'online:all_cats' %}" class="btn btn-secondary cls_btn1"> Continue Shopping </a>
+        </div>
+
+    </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+{% endif %}
+
+
+
+{% endblock %}

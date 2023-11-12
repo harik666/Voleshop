@@ -1,0 +1,81 @@
+
+.body{
+font-family: 'Kanit', sans-serif;
+}
+
+.nav-item{
+letter-spacing: .2em;
+font-size: 14px;
+text-transform : uppercase;
+}
+
+.dropdown-item{
+letter-spacing: .2em;
+font-size: 14px;
+text-transform : uppercase;
+}
+
+.cls_foot_p{
+padding:20px;
+font-size:14px;
+}
+
+.cls_foot{
+background:white;
+width: 100%;
+}
+
+.cls_div1{
+padding-top:10px;
+}
+
+.cls_div1 .mx-auto{
+color: black;
+font-size: 18px;
+font-weight: bold;
+}
+
+.cls_title{
+letter-spacing: .2em;
+}
+
+.cls_img1{
+
+}
+.cls_txt1{ font-size: 18px;padding: 10px;font-weight: bold;text-transform : uppercase; text-align: center;font-family: system-ui;}
+
+.cls_txt2{color: black;font-weight: bold;padding-left: 10px; text-align: center;font-family: system-ui;}
+
+.cls_txt3{ font-size: 18px;padding: 10px;font-weight: bold;text-transform : uppercase; font-family: system-ui;}
+
+.cls_txt4{color: black;font-weight: bold;padding-left: 10px; font-family: system-ui;}
+
+.cls_btn1{padding: 10px;    background: #7474fb;    border-radius: 5px;    color: white;    font-size: 12px;}
+.cls_dv2{    padding: 10px;    margin-bottom: 20px;}
+.cls_txt4{color: black;font-weight: bold;padding-left: 10px; font-family: math;}
+
+.cls_search{padding:10px;}
+.cls_table{min-width:400px;}
+.cls_thead{letter-spacing:2em;}
+.cls_img{height:100px;width:100px;}
+.cls_a{float:left;}
+.cls_spn1{
+text-align: left;
+    width: 100%;
+    float: left;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 3px;
+}
+.cls_td{
+  float: right;
+}
+.cls_ic1{
+margin: 5px;
+color:red;
+}
+.cls_ic2{
+margin: 5px;
+color:red;
+font-size: 12px;
+}

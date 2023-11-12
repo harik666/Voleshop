@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta_des %}
+
+    Search Page
+
+
+{% endblock %}
+
+{% block title %}
+
+Search
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="text-center cls_search"> You have searched for : <b>"{{query}}"</b> </div>>
+
+  <div class="row">
+ {% for prod in products %}
+
+
+
+
+                <div class="card col-2" style="width: 18rem;margin: 5px;">
+            <a href="{{prod.get_url}}" style="text-align: center;">  <img src="{{ prod.img.url }}" style="width: 150px;height: 200px;" alt="{{prod.name}}"></a>
+
+            <div>
+                <h2 class="cls_txt1">{{prod.name}}</h2>
+                 <p class="cls_txt2">Rs. {{prod.price}}</p>
+            </div>
+</div>
+      {% empty %}
+<div class="row mx-auto">
+    <p class="text-center cls_search">0 results found</p>
+</div>
+            {% endfor %}
+       </div>
+
+
+
+{% endblock %}

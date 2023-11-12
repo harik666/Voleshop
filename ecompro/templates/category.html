@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta_des %}
+
+{% if category %}
+    {{ category.desc|truncatewords:155 }}
+{% else %}
+    Welcome to Voleshop where you buy everything
+{% endif %}
+
+{% endblock %}
+
+{% block title %}
+
+{% if category %}
+    {{ category.name }} - Voleshop Store
+{% else %}
+     Pick From Latest Collections - Voleshop Store
+{% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+{% if category %}
+<div>
+    <div class="row cls_div1">
+        <div class="mx-auto">
+
+        <p> <a href="{% url 'online:all_cats' %}"> Our Collections</a></p>
+            </div>
+    </div>
+</div>
+{% endif %}
+
+
+
+<div>
+    {% if category %}
+
+        <div class="mx-auto">
+            <img class="cls_img1" src="{{ category.img.url }}" style="width: 100%;height: 200px;" alt="{{ category.name}}"> </div>
+        <br>
+        <div>
+            <h1 class="text-center cls_title">{{ category.name }}</h1>
+             <p class="text-justify">{{ category.desc }}</p>
+        </div>
+
+    {% else %}
+
+        <div> <img src="{% static 'img/banner.png' %}" style="height: 250px;width: 100%;" alt="our products"> </div>
+        <br>
+         <div>
+            <h1 class="text-center cls_title" > Our Collections </h1>
+             <p class="text-justify">Clothing can insulate against cold or hot conditions, and it can provide a hygienic barrier, keeping infectious and toxic materials away from the body. It can protect feet from injury and discomfort or facilitate navigation in varied environments.
+                 </p>
+        </div>
+
+    {% endif %}
+</div>
+
+
+<div>
+    <div>
+
+
+        <div class="container">
+  <div class="row">
+ {% for prod in product.object_list %}
+
+
+
+
+                <div class="card col-2" style="width: 18rem;margin: 5px;">
+            <a href="{{prod.get_url}}" style="text-align: center;">  <img src="{{ prod.img.url }}" style="width: 150px;height: 200px;" alt="{{prod.name}}"></a>
+
+            <div>
+                <h2 class="cls_txt1">{{prod.name}}</h2>
+                 <p class="cls_txt2">Rs. {{prod.price}}</p>
+            </div>
+</div>
+            {% endfor %}
+       </div>
+
+            <div class="mx-auto">
+         {% if product.paginator.num_pages > 1 %}
+
+                <hr>
+                <div class="text-center">
+                    {% for pg in product.paginator.page_range %}
+                    <a href="?page={{pg}}" class="btn btn-light btn-sm {% if product.number == pg %} active {% endif%}">{{pg}}</a>
+                    {% endfor%}
+                </div>
+                {% endif %}
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+{% endblock %}
